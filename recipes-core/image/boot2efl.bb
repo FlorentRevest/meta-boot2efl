@@ -11,4 +11,4 @@ PREFERRED_PROVIDER_jpeg = "libjpeg-turbo"
 PREFERRED_PROVIDER_jpeg-native = "libjpeg-turbo-native"
 PREFERRED_PROVIDER_udev = "systemd"
 
-IMAGE_INSTALL = "busybox base-passwd initramfs-boot-android android-tools bash libhybris"
+IMAGE_INSTALL = "busybox base-passwd initramfs-radxa android-tools bash libhybris"
