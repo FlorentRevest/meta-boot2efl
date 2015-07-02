@@ -93,7 +93,7 @@ DEBIAN_NOAUTONAME_ecore-evas = "1"
 DEBIAN_NOAUTONAME_embryo = "1"
 
 ALLOW_EMPTY_ecore = "1"
-RDEPENDS_ecore = "ecore-audio ecore-input-evas ecore-input ecore-imf-evas ecore-imf ecore-file ecore-con ecore-ipc ecore-x ecore-evas"
+RDEPENDS_ecore = "ecore-audio ecore-input-evas ecore-input ecore-imf-evas ecore-imf ecore-file ecore-con ecore-ipc ecore-evas"
 
 python populate_packages_prepend () {
     for plugin_type in "engines loaders savers".split():
