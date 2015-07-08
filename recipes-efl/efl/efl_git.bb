@@ -3,7 +3,7 @@ require ${BPN}.inc
 SRC_URI = "\
     git://github.com/FlorentRevest/EFL.git \
     file://0001-configure.ac-Don-t-check-for-Xprint-extension.patch \
-    file://0002-evas_3d-Add-Eet.h-includes.patch \ 
+    file://0002-evas_3d-Add-Eet.h-includes.patch \
 "
 SRCREV = "${AUTOREV}"
 S = "${WORKDIR}/git"
