@@ -10,4 +10,4 @@ IMAGE_FEATURES += "splash package-management ssh-server-dropbear"
 
 # Dev tools
 IMAGE_FEATURES += "dev-pkgs"
-IMAGE_INSTALL += "autoconf automake binutils binutils-symlinks cpp cpp-symlinks gcc gcc-symlinks g++ g++-symlinks gettext make libstdc++ libstdc++-dev file coreutils wayland-dev tslib-dev curl glib-2.0-dev gnutls-dev pkgconfig zlib-dev openssl-dev libsndfile1-dev dbus-dev libexif-dev librsvg-dev freetype-dev libpng-dev tiff-dev fontconfig-dev fribidi-dev giflib-dev libjpeg-turbo-dev libxkbcommon-dev gdb valgrind strace ltrace elfutils"
+IMAGE_INSTALL += "autoconf automake binutils binutils-symlinks cpp cpp-symlinks gcc gcc-symlinks g++ g++-symlinks gettext make libstdc++ libstdc++-dev file coreutils wayland-dev tslib-dev curl glib-2.0-dev gnutls-dev pkgconfig zlib-dev openssl-dev libsndfile1-dev dbus-dev libexif-dev librsvg-dev freetype-dev libpng-dev tiff-dev fontconfig-dev fribidi-dev giflib-dev libjpeg-turbo-dev libxkbcommon-dev gdb valgrind strace ltrace elfutils efl-dbg expedite-dbg elementary-tests"
