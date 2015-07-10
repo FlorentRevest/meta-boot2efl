@@ -2,8 +2,8 @@ SUMMARY = "EFL"
 LICENSE = "MIT & BSD & LGPL-2.1"
 LIC_FILES_CHKSUM = "file://COPYING;md5=5cb19adb5be911811c7a4e05152548e8"
 
-DEPENDS_class-native = "freetype-native libxext-native libpng-native jpeg-native tiff-native libfribidi-native glib-2.0-native dbus-native"
-DEPENDS = "virtual/libiconv tslib curl glib-2.0 gnutls pkgconfig zlib jpeg openssl libsndfile1 dbus libexif librsvg freetype libpng tiff fontconfig libfribidi giflib udev efl-native util-linux"
+DEPENDS_class-native = "freetype-native libpng-native jpeg-native tiff-native libfribidi-native glib-2.0-native dbus-native"
+DEPENDS = "virtual/libiconv libinput curl glib-2.0 gnutls pkgconfig zlib jpeg openssl libsndfile1 dbus libexif librsvg freetype libpng tiff fontconfig libfribidi giflib udev efl-native util-linux virtual/libgles2 virtual/egl libdrm libgbm"
 inherit efl gettext pkgconfig
 
 BBCLASSEXTEND = "native"
@@ -25,6 +25,12 @@ EXTRA_OECONF_append_class-target = " \
     --with-eolian-gen=${STAGING_BINDIR_NATIVE}/eolian_gen \
     --with-eolian-cxx=${STAGING_BINDIR_NATIVE}/eolian_cxx \
     --with-elua=${STAGING_BINDIR_NATIVE}/elua \
+    --enable-drm \
+    --enable-gl-drm \
+    --with-opengl=es \
+    --enable-egl \
+    --enable-fb \
+    --disable-tslib \
 "
 EXTRA_OECONF_append_class-native = " \
     --disable-fontconfig \
@@ -54,6 +60,7 @@ PACKAGECONFIG ?= "opengl-es gstreamer1 pulseaudio luajit"
 PACKAGECONFIG_class-native = "luajit"
 
 # sort of tri-state
+PACKAGECONFIG_class-native[x11] = ",,libxext-native"
 PACKAGECONFIG[x11] = ",--with-x11=none,libxcursor libxcomposite libxinerama libxranr libxtst libxscrnsaver libxrender libxdamage virtual/libx11 libxext"
 PACKAGECONFIG[wayland] = "--enable-wayland,--disable-wayland,wayland"
 PACKAGECONFIG[opengl-full] = "--with-opengl=full,,virtual/libgl"
