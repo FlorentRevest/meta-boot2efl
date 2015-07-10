@@ -1,3 +1,6 @@
 # Remove X11 Dependencies
-EXTRA_OECONF = "--enable-fb"
+SRCREV = "${AUTOREV}"
+EXTRA_OECONF = ""
 RDEPENDS_${PN} = "expedite-themes"
+
+S="${WORKDIR}/git"
