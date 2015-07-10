@@ -4,7 +4,7 @@ SRC_URI = "\
     git://github.com/FlorentRevest/Elementary \
 "
 
-SRCREV = "${AUTOREV}"
+SRCREV = "f583a8051afacfe73920f8a03a448bf31d74ddf3"
 S =  "${WORKDIR}/git"
 
 # only for target, because configure doesn't default to sane default when
