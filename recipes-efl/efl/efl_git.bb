@@ -6,8 +6,6 @@ SRC_URI = "\
 SRCREV = "${AUTOREV}"
 S = "${WORKDIR}/git"
 
-LDFLAGS := "${@'${LDFLAGS}'.replace('-Wl,--as-needed', '')}"
-
 # Temporary disable until error like the one following are fixed
 # efl-native/2_1.8.4-r0/efl-1.8.4/src/lib/eet/.libs/libeet.so: file not recognized: File truncated
 # collect2: error: ld returned 1 exit status
