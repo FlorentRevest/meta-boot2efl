@@ -5,7 +5,7 @@ LICENSE = "GPL-2.0"
 
 IMAGE_LINGUAS = "en-us fr-fr de-de es-es hi-in"
  
-IMAGE_INSTALL += "base-files base-passwd netbase keymaps procps dosfstools nano bash acl coreutils e2fsprogs file findutils gawk grep makedevs mktemp ncurses net-tools psmisc sed tar time util-linux zlib iproute2 iputils iptables module-init-tools openssl ethtool gzip shadow sudo at bzip2 less logrotate tzdata sysfsutils systemd efl elementary expedite libhybris android kbd connman wget nfs-utils nfs-utils-client"
+IMAGE_INSTALL += "base-files base-passwd netbase keymaps procps dosfstools nano bash acl coreutils e2fsprogs file findutils gawk grep makedevs mktemp ncurses net-tools psmisc sed tar time util-linux zlib iproute2 iputils iptables module-init-tools openssl ethtool gzip shadow sudo at bzip2 less logrotate tzdata sysfsutils systemd efl elementary expedite libhybris android kbd connman wget nfs-utils nfs-utils-client liberation-fonts"
 IMAGE_FEATURES += "splash package-management ssh-server-dropbear"
 
 # Dev tools
