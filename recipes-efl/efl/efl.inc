@@ -25,12 +25,7 @@ EXTRA_OECONF_append_class-target = " \
     --with-eolian-gen=${STAGING_BINDIR_NATIVE}/eolian_gen \
     --with-eolian-cxx=${STAGING_BINDIR_NATIVE}/eolian_cxx \
     --with-elua=${STAGING_BINDIR_NATIVE}/elua \
-    --enable-drm \
-    --enable-gl-drm \
-    --with-opengl=es \
-    --enable-egl \
-    --enable-fb \
-    --disable-tslib \
+    --enable-eglfs \
 "
 EXTRA_OECONF_append_class-native = " \
     --disable-fontconfig \
