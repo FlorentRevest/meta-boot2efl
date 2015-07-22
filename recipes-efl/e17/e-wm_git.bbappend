@@ -5,7 +5,8 @@ SRC_URI = " \
     file://enlightenment_start.oe \
     file://applications.menu \
 "
-SRCREV = "${AUTOINC}"
+SRCREV = "${AUTOREV}"
+PV = "git"
 
 # Removes X11 forced dependencies
 DEPENDS = "eet evas eina ecore edje efreet edbus eeze eio elementary"
