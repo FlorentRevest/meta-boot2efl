@@ -3,7 +3,7 @@ LICENSE = "MIT & BSD & LGPL-2.1"
 LIC_FILES_CHKSUM = "file://COPYING;md5=5cb19adb5be911811c7a4e05152548e8"
 
 DEPENDS_class-native = "freetype-native libpng-native jpeg-native tiff-native libfribidi-native glib-2.0-native dbus-native"
-DEPENDS = "virtual/libiconv libinput curl glib-2.0 gnutls pkgconfig zlib jpeg openssl libsndfile1 dbus libexif librsvg freetype libpng tiff fontconfig libfribidi giflib udev efl-native util-linux virtual/libgles2 virtual/egl"
+DEPENDS = "virtual/libiconv tslib libinput curl glib-2.0 gnutls pkgconfig zlib jpeg openssl libsndfile1 dbus libexif librsvg freetype libpng tiff fontconfig libfribidi giflib udev efl-native util-linux virtual/libgles2 virtual/egl"
 inherit efl gettext pkgconfig
 
 BBCLASSEXTEND = "native"
@@ -51,13 +51,13 @@ EXTRA_OECONF_append_class-native = " \
     --disable-image-loader-dds \
 "
 
-PACKAGECONFIG ?= "opengl-es gstreamer1 pulseaudio luajit"
+PACKAGECONFIG ?= "opengl-es gstreamer1 pulseaudio luajit ${@base_contains('DISTRO_FEATURES', 'wayland', 'wayland', '', d)} ${@base_contains('DISTRO_FEATURES', 'x11', 'x11', '', d)}"
 PACKAGECONFIG_class-native = "luajit"
 
 # sort of tri-state
 PACKAGECONFIG_class-native[x11] = ",,libxext-native"
 PACKAGECONFIG[x11] = ",--with-x11=none,libxcursor libxcomposite libxinerama libxranr libxtst libxscrnsaver libxrender libxdamage virtual/libx11 libxext"
-PACKAGECONFIG[wayland] = "--enable-wayland,--disable-wayland,wayland"
+PACKAGECONFIG[wayland] = "--enable-wayland,--disable-wayland,wayland libxkbcommon"
 PACKAGECONFIG[opengl-full] = "--with-opengl=full,,virtual/libgl"
 PACKAGECONFIG[opengl-es] = "--with-opengl=es,,virtual/libgles2"
 PACKAGECONFIG[opengl-none] = "--with-opengl=none,,"
@@ -79,7 +79,7 @@ do_install_append() {
     rm -f ${datadir}/elua/*/*.luac
 }
 
-PACKAGES =+ "edje-utils embryo-utils embryo-tests efreet-trash efreet-mime libeet libefreet ecore-audio ecore-input-evas ecore-input ecore-imf-evas ecore-imf ecore-file ecore-con ecore-ipc ecore-x ecore-evas libemotion eo ecore edje eet eeze efreet eina eio embryo emotion ethumb evas eldbus elua"
+PACKAGES =+ "edje-utils embryo-utils embryo-tests efreet-trash efreet-mime libeet libefreet ecore-audio ecore-input-evas ecore-input ecore-imf-evas ecore-imf ecore-file ecore-con ecore-ipc ecore-x ecore-wayland ecore-evas libemotion eo ecore edje eet eeze efreet eina eio embryo emotion ethumb evas eldbus elua"
 
 # upgrade path from 1.7
 DEBIAN_NOAUTONAME_ecore-audio = "1"
@@ -91,6 +91,7 @@ DEBIAN_NOAUTONAME_ecore-file = "1"
 DEBIAN_NOAUTONAME_ecore-con = "1"
 DEBIAN_NOAUTONAME_ecore-ipc = "1"
 DEBIAN_NOAUTONAME_ecore-x = "1"
+DEBIAN_NOAUTONAME_ecore-wayland = "1"
 DEBIAN_NOAUTONAME_ecore-evas = "1"
 DEBIAN_NOAUTONAME_embryo = "1"
 
@@ -167,6 +168,10 @@ FILES_ecore-ipc = "\
 FILES_ecore-x = "\
     ${libdir}/libecore_x${SOLIBS} \
     ${libdir}/ecore_x/bin/v-*/ecore_x_vsync \
+"
+FILES_ecore-wayland = "\
+    ${libdir}/libecore_wayland${SOLIBS} \
+    ${libdir}/ecore_wayland/bin/v-*/ecore_wayland_vsync \
 "
 FILES_ecore-evas = "\
     ${libdir}/libecore_evas${SOLIBS} \
