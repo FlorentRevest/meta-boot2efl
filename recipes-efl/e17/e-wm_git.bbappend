@@ -23,7 +23,9 @@ RDEPENDS_${PN} = "\
 "
 
 # Makes wayland and x11 optional
-PACKAGECONFIG[wayland] = "--enable-wayland --enable-wayland-egl,--disable-wayland --disable-wayland-egl,libwayland virtual/glesv2"
+PACKAGECONFIG ??= "${@base_contains('DISTRO_FEATURES', 'wayland', 'wayland', '', d)} \
+                   ${@base_contains('DISTRO_FEATURES', 'x11', 'x11', '', d)}"
+PACKAGECONFIG[wayland] = "--enable-wayland --enable-wayland-egl,--disable-wayland --disable-wayland-egl,wayland virtual/libgles2"
 PACKAGECONFIG[x11] = "--x-includes=${STAGING_INCDIR}/X11 --x-libraries=${STAGING_LIBDIR} --enable-simple-x11,,libxcb libxcb"
 
 # Enable eglfs module
