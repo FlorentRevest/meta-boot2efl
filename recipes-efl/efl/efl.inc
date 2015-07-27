@@ -56,7 +56,7 @@ PACKAGECONFIG_class-native = "luajit"
 
 # sort of tri-state
 PACKAGECONFIG_class-native[x11] = ",,libxext-native"
-PACKAGECONFIG[x11] = ",--with-x11=none,libxcursor libxcomposite libxinerama libxranr libxtst libxscrnsaver libxrender libxdamage virtual/libx11 libxext"
+PACKAGECONFIG[x11] = ",--with-x11=none,libxcursor libxcomposite libxinerama libxrandr libxtst libxscrnsaver libxrender libxdamage virtual/libx11 libxext"
 PACKAGECONFIG[wayland] = "--enable-wayland,--disable-wayland,wayland libxkbcommon"
 PACKAGECONFIG[opengl-full] = "--with-opengl=full,,virtual/libgl"
 PACKAGECONFIG[opengl-es] = "--with-opengl=es,,virtual/libgles2"
