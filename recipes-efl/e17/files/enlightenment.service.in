@@ -1,0 +1,17 @@
+[Unit]
+Description=Enlightenment service
+Before=end.target
+Requires=dbus.socket
+Wants=dbus.service
+
+[Service]
+Type=forking
+Environment=XDG_RUNTIME_DIR=/tmp
+Environment=HOME=/home/root/
+Environment=E_START=enlightenment
+ExecStart=@prefix@/bin/enlightenment
+Restart=always
+RestartSec=2
+
+[Install]
+RequiredBy=basic.target
