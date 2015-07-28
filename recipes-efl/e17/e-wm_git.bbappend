@@ -24,9 +24,12 @@ RDEPENDS_${PN} = "\
     ${PN}-utils \
 "
 
+RRECOMMENDS_${PN} += "\
+    ${PN}-config-standard \
+"
+
 do_configure_prepend() {
     cp ../enlightenment.service.in ../git/data/units/enlightenment.service.in
-
 }
 
 # Makes wayland and x11 optional
