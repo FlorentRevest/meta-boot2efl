@@ -5,6 +5,7 @@ SRC_URI = " \
     file://enlightenment_start.oe \
     file://applications.menu \
     file://enlightenment.service.in \
+    file://0001-Disables-mixer-and-shot-which-doesn-t-work-as-expect.patch \
 "
 SRCREV = "${AUTOREV}"
 PV = "git"
@@ -35,9 +36,10 @@ do_configure_prepend() {
 # Makes wayland and x11 optional
 PACKAGECONFIG ??= "${@base_contains('DISTRO_FEATURES', 'wayland', 'wayland', '', d)} \
                    ${@base_contains('DISTRO_FEATURES', 'x11', 'x11', '', d)} \
+                   ${@base_contains('DISTRO_FEATURES', 'pam', 'pam', '', d)} \
                    ${@base_contains('DISTRO_FEATURES', 'systemd', 'systemd', '', d)}"
 PACKAGECONFIG[wayland] = "--enable-wayland --enable-wayland-egl --enable-wl-desktop-shell,--disable-wayland --disable-wayland-egl --disable-wl-desktop-shell,wayland virtual/libgles2 xkeyboard-config"
 PACKAGECONFIG[x11] = "--x-includes=${STAGING_INCDIR}/X11 --x-libraries=${STAGING_LIBDIR} --enable-simple-x11,--disable-simple-x11 --disable-wl-x11 --disable-xwayland --disable-shot,libxcb libxcb"
 
-# Enable eglfs module and remove a segfaulter module
-EXTRA_OECONF += "--enable-wl-eglfs --disable-mixer --enable-systemd"
+# Enable eglfs module
+EXTRA_OECONF += "--enable-wl-eglfs --disable-mixer"

@@ -1,0 +1,35 @@
+From 03f88e5154bf07b1d195bca28fc6c463023d2de5 Mon Sep 17 00:00:00 2001
+From: Florent Revest <revestflo@gmail.com>
+Date: Wed, 29 Jul 2015 10:03:06 +0200
+Subject: [PATCH] Disables mixer and shot which doesn't work as expected on
+ wayland
+
+---
+ config/standard/e.src | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/config/standard/e.src b/config/standard/e.src
+index 585d3f0..c63a1ce 100644
+--- a/config/standard/e.src
++++ b/config/standard/e.src
+@@ -876,7 +876,7 @@ group "E_Config" struct {
+         }
+         group "E_Config_Module" struct {
+             value "name" string: "mixer";
+-            value "enabled" uchar: 1;
++            value "enabled" uchar: 0;
+             value "delayed" uchar: 1;
+             value "priority" int: 0;
+         }
+@@ -1074,7 +1074,7 @@ group "E_Config" struct {
+         }
+         group "E_Config_Module" struct {
+             value "name" string: "shot";
+-            value "enabled" uchar: 1;
++            value "enabled" uchar: 0;
+             value "delayed" uchar: 1;
+             value "priority" int: 0;
+         }
+-- 
+1.9.1
+
